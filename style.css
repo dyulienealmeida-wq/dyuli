@@ -1,57 +1,200 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BlogTech Dragões | O Avanço da IA</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+/* ===================================================
+   1. VARIÁVEIS E RESET
+   =================================================== */
+:root {
+  --bg-color: #0d0d0f;
+  --card-bg: #16161a;
+  --primary-red: #ff1e27;
+  --hover-red: #d60f17;
+  --glow-red: rgba(255, 30, 39, 0.4);
+  --text-white: #ffffff;
+  --text-gray: #a0a0aa;
+  --border-color: #2a2a32;
+}
 
-  <div id="progress-bar"></div>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-  <header>
-    <div class="logo">BlogTech <span>Dragões 🐉</span></div>
-    <p id="typing-text" class="subtitle"></p>
-  </header>
+body {
+  background-color: var(--bg-color);
+  color: var(--text-white);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-  <main>
-    <article class="article-card">
-      <div class="article-header">
-        <span class="tag">Inteligência Artificial</span>
-        <span class="read-time">⏱️ 3 min de leitura</span>
-      </div>
-      
-      <h1 class="article-title">A Era dos Modelos de IA: O Despertar da Próxima Fronteira</h1>
-      <div class="article-date">Publicado hoje por Equipe Dragões</div>
+/* ===================================================
+   2. BARRA DE PROGRESSO DE LEITURA
+   =================================================== */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background-color: var(--primary-red);
+  box-shadow: 0 0 10px var(--primary-red);
+  width: 0%;
+  z-index: 1000;
+  transition: width 0.1s ease-out;
+}
 
-      <div class="article-content">
-        <p>
-          Assim como os dragões lendários moldavam o mundo com seu poder colossal, a <strong>Inteligência Artificial</strong> está redefinindo as bases da sociedade moderna. Não se trata mais apenas de automação simples, mas do surgimento de modelos generativos capazes de raciocinar, programar e criar em frações de segundo.
-        </p>
-        <p>
-          O avanço exponencial do aprendizado de máquina (Machine Learning) e das redes neurais profundas está acelerando descobertas na medicina, simplificando o desenvolvimento de software e redefinindo a comunicação humana.
-        </p>
-        <p>
-          Estamos presenciando a transição da teoria para a prática global: ferramentas autônomas que auxiliam em tarefas do dia a dia e impulsionam novos patamares de produtividade no trabalho. O fogo da transformação tecnológica já foi aceso!
-        </p>
-      </div>
+/* ===================================================
+   3. CABEÇALHO E ANIMAÇÕES
+   =================================================== */
+header {
+  background: linear-gradient(180deg, #000000 0%, var(--bg-color) 100%);
+  border-bottom: 2px solid var(--primary-red);
+  padding: 3rem 1rem;
+  text-align: center;
+}
 
-      <div class="like-section">
-        <button id="btnLike" class="like-btn">
-          <span>🔥</span> Curtir
-        </button>
-        <div class="like-display">
-          <span id="counter" class="like-count">0</span> curtidas neste post
-        </div>
-      </div>
-    </article>
-  </main>
+.logo {
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-white);
+}
 
-  <footer>
-    <p>&copy; 2026 BlogTech Dragões. Todos os direitos reservados.</p>
-  </footer>
+.logo span {
+  color: var(--primary-red);
+  text-shadow: 0 0 15px var(--glow-red);
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+.subtitle {
+  color: var(--text-gray);
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  min-height: 1.6em; /* Evita que o layout pulso enquanto digita */
+}
+
+/* ===================================================
+   4. CARD DO ARTIGO
+   =================================================== */
+main {
+  max-width: 850px;
+  margin: 2.5rem auto;
+  padding: 0 1.5rem;
+  flex: 1;
+  width: 100%;
+}
+
+.article-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-left: 5px solid var(--primary-red);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px var(--glow-red);
+}
+
+.article-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  background-color: var(--primary-red);
+  color: var(--text-white);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.read-time {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+}
+
+.article-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-white);
+}
+
+.article-date {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+  margin-bottom: 1.5rem;
+}
+
+.article-content p {
+  margin-bottom: 1rem;
+  color: #e0e0e0;
+  font-size: 1.05rem;
+}
+
+/* ===================================================
+   5. BOTÃO DE LIKES
+   =================================================== */
+.like-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.like-btn {
+  background-color: var(--primary-red);
+  color: var(--text-white);
+  border: none;
+  padding: 0.75rem 1.6rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 4px 15px var(--glow-red);
+}
+
+.like-btn:hover {
+  background-color: var(--hover-red);
+}
+
+.like-btn.animating {
+  animation: buttonClick 0.3s ease-in-out;
+}
+
+.like-display {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.like-count {
+  color: var(--primary-red);
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #000000;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-gray);
+  font-size: 0.9rem;
+}
+
+@keyframes buttonClick {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
