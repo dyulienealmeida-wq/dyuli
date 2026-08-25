@@ -1,4 +1,4 @@
-// --- 1. GERENCIAMENTO DE LIKES (COM LOCALSTORAGE) ---
+  // --- 1. GERENCIAMENTO DE LIKES (COM LOCALSTORAGE) ---
 let totalLikes = parseInt(localStorage.getItem('blogDragonsLikes')) || 0;
 const btnLike = document.getElementById('btnLike');
 const counterDisplay = document.getElementById('counter');
